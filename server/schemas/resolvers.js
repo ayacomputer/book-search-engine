@@ -5,22 +5,13 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, { args }) => {
-            return User.findOne({ _id: args._id });
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return await User.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('You need to be logged in!');
+
         },
-
-        bookCount: async () => {
-            const allBooks = Book.findAll();
-            const bookCount = allBooks.length
-            return bookCount
-        },
-        savedBooks: async (parent, { args }) => {
-            const user = User.findOne({ _id: args._id });
-            const savedBooks = user.savedBooks
-            return savedBooks
-        }
-
-
     },
     Mutation: {
         login: async (parent, { email, password }) => {
@@ -38,19 +29,24 @@ const resolvers = {
             return { token, user };
         },
         addUser: async (parent, { _id, args }) => {
+
             const user = await User.create(...args);
             const token = signToken(user);
             return { token, user };
         },
-        saveBook: async (parent, { args }) => {
+        saveBook: async (parent, args, context) => {
+            if (context.user) {
+                return await User.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('You need to be logged in!');
             const updatedUser = await User.findOneAndUpdate({ _id: user._id },
                 { $addToSet: { savedBooks: { ...args } } },
                 { new: true });
             return updatedUser;
         },
-        removeBook: async (parent, { bookId }) => {
+        removeBook: async (parent, { bookId }, context) => {
             const updatedUser = await User.findOneAndUpdate({ _id: user._id },
-                { $pull: { savedBooks: { bookId: bookId } } },
+                { $pull: { savedBooks: { bookId } } },
                 { new: true });
             return updatedUser;
         },
