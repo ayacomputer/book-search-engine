@@ -7,7 +7,14 @@ export const QUERY_ME = gql`
         username: String!
         email: String!
         bookCount: Int
-        savedBooks: [Book]
+        savedBooks: {
+          bookId: 
+          authors: 
+          description: 
+          title:
+          image: 
+          link: 
+        }
     }
   }
 `;
