@@ -9,7 +9,7 @@ const LoginForm = (props) => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [login, { error, data }] = useMutation(USER_LOGIN);
+  const [userLogin, { error, data }] = useMutation(USER_LOGIN);
 
 
   const handleInputChange = (event) => {
@@ -30,7 +30,7 @@ const LoginForm = (props) => {
 
     try {
 
-      const { data } = await login({
+      const { data } = await userLogin({
         variables: { ...userFormData },
       });
       Auth.login(data.login.token);

@@ -29,7 +29,7 @@ const resolvers = {
             return { token, user };
         },
         addUser: async (parent, args) => {
-            const user = await User.create(...args);
+            const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
         },
@@ -37,7 +37,7 @@ const resolvers = {
 
             if (context.user) {
                 return await User.findOneAndUpdate({ _id: user._id },
-                    { $addToSet: { savedBooks: bookData } },
+                    { $push: { savedBooks: bookData } },
                     { new: true });
             }
             throw new AuthenticationError('You need to be logged in!');
