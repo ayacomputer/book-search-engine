@@ -5,11 +5,11 @@ import Auth from '../utils/auth';
 import { USER_LOGIN } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [userLogin, { error, data }] = useMutation(USER_LOGIN);
+  const [userLogin, { error }] = useMutation(USER_LOGIN);
 
 
   const handleInputChange = (event) => {
@@ -19,7 +19,7 @@ const LoginForm = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(userFormData);
+
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
