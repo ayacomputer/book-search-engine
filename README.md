@@ -52,7 +52,7 @@
  [Click Here to view the deployed app](https://ayacomputer-book-search-engine.herokuapp.com/)
 
 
-Refactoring fully functional starter code from the Google Books API search engine built with the RESTful API to the GraphQL API built with Apollo Server. The app is built using the MERN stack with a React front-end, MongoDB database, Node.js/Express.js server and API.
+Refactoring starter code with a fully functional Google Books API search engine built with the RESTful API to be a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API.
 
 <p align = "right">(<a href="#top">back to top</a>)</>
 
