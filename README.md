@@ -68,7 +68,8 @@ Refactoring starter code with a fully functional Google Books API search engine 
 
 ## Usage
 
-  Following image shows this application's functionality(questions).
+  Following image shows one of this application's functionality. 
+  [Click Here to view the deployed app](https://ayacomputer-book-search-engine.herokuapp.com/)
 
 ![This is an image of the product.](./client/public/assets/product2.png)
 
