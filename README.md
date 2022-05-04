@@ -84,7 +84,7 @@ To get a local copy up and running follow these simple example steps.
 
  1: Clone the repo
  ```
-  git clone git@github.com:ayacomputer/09-Readme-Generator.git
+  git clone git@github.com:ayacomputer/book-search-engine.git
  ```
  2: Install the npm packages
  ```
